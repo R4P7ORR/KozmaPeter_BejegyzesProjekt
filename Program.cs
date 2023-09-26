@@ -46,7 +46,7 @@ namespace BejegyzesProjekt
             Random r = new Random();
             for (int i = 0; i < bList1.Count * 20; i++)
             {
-                bList1[r.Next(0, bList1.Count + 1)].Like();
+                bList1[r.Next(0, bList1.Count)].Like();
             }
         }
         static void modifySecond()
@@ -59,6 +59,15 @@ namespace BejegyzesProjekt
             listFilling();
             randomLikes();
             modifySecond();
+
+			foreach (Bejegyzes item in bList1)
+			{
+				Console.WriteLine(item.ToString());
+				//Console.WriteLine($"Szerző: {item.Szerzo}   Létrejött: {item.Letrejott} Szerkesztve: {item.Szerkesztve}\n{item.Tartalom}");
+				Console.WriteLine("------------------------------------------------------------");
+			}
+
+
 
             Console.ReadKey();
         }

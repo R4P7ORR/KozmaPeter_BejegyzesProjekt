@@ -41,7 +41,7 @@ namespace BejegyzesProjekt
 
 		public override string ToString()
 		{
-			return $"{szerzo}   -   {likeok}    -   {letrejott}\nSzerkesztve: {szerkesztve}\n{tartalom}";
+			return $"{szerzo}   -   {likeok} Like    -   {letrejott}\nSzerkesztve: {szerkesztve}\n{tartalom}";
 		}
 
 		public void Like()
