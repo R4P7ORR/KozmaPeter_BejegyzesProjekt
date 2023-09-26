@@ -54,11 +54,26 @@ namespace BejegyzesProjekt
             Console.WriteLine("Adjon meg egy szöveget! (A második bejegyzés tartalma erre lesz módosítva.)");
             bList1[1].Tartalom = Console.ReadLine();
         }
+        static void mostPopular()
+        {
+            int maxlikes = int.MinValue;
+			foreach (Bejegyzes item in bList1)
+			{
+				if (item.Likeok > maxlikes)
+				{
+                    maxlikes = item.Likeok;
+				}
+			}
+			Console.WriteLine($"A legnépszerűbb bejegyzés {maxlikes} like-ot kapott.");
+        }
         static void Main(string[] args)
         {
             listFilling();
             randomLikes();
             modifySecond();
+            mostPopular();
+
+
 
 			foreach (Bejegyzes item in bList1)
 			{
