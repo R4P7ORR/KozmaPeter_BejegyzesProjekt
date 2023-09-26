@@ -66,21 +66,46 @@ namespace BejegyzesProjekt
 			}
 			Console.WriteLine($"A legnépszerűbb bejegyzés {maxlikes} like-ot kapott.");
         }
+        static void moreThan35()
+        {
+            string likeok = "Nincs olyan bejegyzés, ami 35 like-nál többet kapott.";
+			foreach (var item in bList1)
+			{
+				if (item.Likeok > 35)
+				{
+                    likeok = "Van olyan bejegyzés, ami 35 like-nál többet kapott.";
+				}
+			}
+			Console.WriteLine(likeok);
+        }
+        static int lessThan15()
+        {
+            int Counter = 0;
+			foreach (Bejegyzes item in bList1)
+			{
+				if (item.Likeok < 15)
+				{
+                    Counter++;
+				}
+			}
+            return Counter;
+        }
         static void Main(string[] args)
         {
             listFilling();
             randomLikes();
             modifySecond();
+            foreach (Bejegyzes item in bList1)
+            {
+                Console.WriteLine(item.ToString());
+                //Console.WriteLine($"Szerző: {item.Szerzo}   Létrejött: {item.Letrejott} Szerkesztve: {item.Szerkesztve}\n{item.Tartalom}");
+                Console.WriteLine("------------------------------------------------------------");
+            }
             mostPopular();
+            moreThan35();
+			Console.WriteLine($"Összesen { lessThan15() } bejegyzés van, ami 15 like-nál kevesebbet kapott.");
 
-
-
-			foreach (Bejegyzes item in bList1)
-			{
-				Console.WriteLine(item.ToString());
-				//Console.WriteLine($"Szerző: {item.Szerzo}   Létrejött: {item.Letrejott} Szerkesztve: {item.Szerkesztve}\n{item.Tartalom}");
-				Console.WriteLine("------------------------------------------------------------");
-			}
+			
 
 
 
