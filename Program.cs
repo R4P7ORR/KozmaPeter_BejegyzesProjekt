@@ -57,44 +57,56 @@ namespace BejegyzesProjekt
         static void mostPopular()
         {
             int maxlikes = int.MinValue;
-			foreach (Bejegyzes item in bList1)
-			{
-				if (item.Likeok > maxlikes)
-				{
+            foreach (Bejegyzes item in bList1)
+            {
+                if (item.Likeok > maxlikes)
+                {
                     maxlikes = item.Likeok;
-				}
-			}
-			Console.WriteLine($"A legnépszerűbb bejegyzés {maxlikes} like-ot kapott.");
+                }
+            }
+            Console.WriteLine($"A legnépszerűbb bejegyzés {maxlikes} like-ot kapott.");
         }
         static void moreThan35()
         {
             string likeok = "Nincs olyan bejegyzés, ami 35 like-nál többet kapott.";
-			foreach (var item in bList1)
-			{
-				if (item.Likeok > 35)
-				{
+            foreach (var item in bList1)
+            {
+                if (item.Likeok > 35)
+                {
                     likeok = "Van olyan bejegyzés, ami 35 like-nál többet kapott.";
-				}
-			}
-			Console.WriteLine(likeok);
+                }
+            }
+            Console.WriteLine(likeok);
         }
         static int lessThan15()
         {
             int Counter = 0;
-			foreach (Bejegyzes item in bList1)
-			{
-				if (item.Likeok < 15)
-				{
+            foreach (Bejegyzes item in bList1)
+            {
+                if (item.Likeok < 15)
+                {
                     Counter++;
-				}
-			}
+                }
+            }
             return Counter;
+        }
+        static void listOrder()
+        {
+            bList1 = bList1.OrderByDescending(x => x.Likeok).ToList();
+            StreamWriter sw = new StreamWriter("bejegyzesek_rendezett.txt");
+            foreach (Bejegyzes item in bList1)
+			{
+				Console.WriteLine(item.ToString() + "\n-------------------------------------");
+                sw.WriteLine($"{item.Szerzo};{item.Likeok};{item.Letrejott};{item.Szerkesztve};{item.Tartalom}");
+			}
+            sw.Close();
         }
         static void Main(string[] args)
         {
             listFilling();
             randomLikes();
             modifySecond();
+			
             foreach (Bejegyzes item in bList1)
             {
                 Console.WriteLine(item.ToString());
@@ -102,9 +114,12 @@ namespace BejegyzesProjekt
                 Console.WriteLine("------------------------------------------------------------");
             }
             mostPopular();
+            Console.WriteLine("------------------------------------------------------------\n");
             moreThan35();
-			Console.WriteLine($"Összesen { lessThan15() } bejegyzés van, ami 15 like-nál kevesebbet kapott.");
-
+            Console.WriteLine("------------------------------------------------------------\n");
+            Console.WriteLine($"Összesen { lessThan15() } bejegyzés van, ami 15 like-nál kevesebbet kapott.");
+            Console.WriteLine("------------------------------------------------------------\n");
+            listOrder();
 			
 
 
