@@ -8,11 +8,11 @@ namespace BejegyzesProjekt
 {
 	internal class Bejegyzes
 	{
-        private string szerzo;
-        private string tartalom;
-        private int likeok;
-        private DateTime letrejott;
-        private DateTime szerkesztve;
+		private string szerzo;
+		private string tartalom;
+		private int likeok;
+		private DateTime letrejott;
+		private DateTime szerkesztve;
 
 		public Bejegyzes(string szerzo, string tartalom)
 		{
@@ -24,14 +24,29 @@ namespace BejegyzesProjekt
 		}
 
 		public string Szerzo { get => szerzo; }
-		public string Tartalom { get => tartalom; set => tartalom = value; }
+		public string Tartalom
+		{
+			get {
+				return this.tartalom;
+			}
+			set
+			{
+				this.tartalom = value;
+				this.szerkesztve = DateTime.Now;
+			}
+		}
 		public int Likeok { get => likeok; }
 		public DateTime Letrejott { get => letrejott; }
 		public DateTime Szerkesztve { get => szerkesztve; }
 
 		public override string ToString()
-        {
-            return $"{szerzo}   -   {likeok}    -   {letrejott}\nSzerkesztve: {szerkesztve}\n{tartalom}";
-        }
+		{
+			return $"{szerzo}   -   {likeok}    -   {letrejott}\nSzerkesztve: {szerkesztve}\n{tartalom}";
+		}
+
+		public void Like()
+		{
+			likeok++;
+		}
     }
 }
